@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' hide Headers;
 import 'package:dio_logging_interceptor/dio_logging_interceptor.dart';
 import 'package:sechub/config/constants.dart';
 
@@ -26,5 +26,8 @@ abstract class RestClient {
   }
 
   @POST("/okpp/upload.php")
+  @Headers(<String, dynamic>{
+    "Content-Type": "multipart/form-data",
+  })
   Future<void> sendVideo(@Part() File file);
 }
