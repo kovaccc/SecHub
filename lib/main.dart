@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:camera/camera.dart';
@@ -38,22 +39,21 @@ class MyApp extends StatelessWidget {
       home: BlocProvider(
           create: (context) =>
               VideoBloc(videoRepository: getIt<VideoRepository>()),
-          child: const ScanPaintPage()),
+          child: const RecordVideoPage()),
     );
   }
 }
 
-class ScanPaintPage extends StatefulWidget {
-  const ScanPaintPage({Key? key}) : super(key: key);
+class RecordVideoPage extends StatefulWidget {
+  const RecordVideoPage({Key? key}) : super(key: key);
 
   @override
-  State<ScanPaintPage> createState() => _ScanPaintPageState();
+  State<RecordVideoPage> createState() => _RecordVideoPageState();
 }
 
-class _ScanPaintPageState extends State<ScanPaintPage> {
+class _RecordVideoPageState extends State<RecordVideoPage> {
   late CameraController controller;
-  bool showCameraPermissionDialog = false;
-  bool isButtonActive = true;
+  bool isCameraRecording = false;
 
   @override
   void initState() {
@@ -65,6 +65,20 @@ class _ScanPaintPageState extends State<ScanPaintPage> {
   void dispose() {
     controller.dispose();
     super.dispose();
+  }
+
+  Future<void> recordVideo() async {
+    print("Start");
+    // controller.startVideoRecording();
+    await Future.delayed(const Duration(seconds: 3));
+    if (isCameraRecording) {
+      print("Stop");
+      // XFile xFile = await controller.stopVideoRecording();
+      // File file = File(xFile.path);
+      // BlocProvider.of<VideoBloc>(context)
+      //     .add(VideoUpload(file));
+      recordVideo();
+    }
   }
 
   Future<CameraController> initCameraController() async {
@@ -103,15 +117,18 @@ class _ScanPaintPageState extends State<ScanPaintPage> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     GestureDetector(
-                      onTapDown: (_) async {
-                        if (!showCameraPermissionDialog) {
-                          controller.startVideoRecording();
+                      onTap: () async {
+                        if (isCameraRecording) {
+                          isCameraRecording = false;
+                          print("Stop right now");
+                          // XFile xFile = await controller.stopVideoRecording();
+                          // File file = File(xFile.path);
+                          // BlocProvider.of<VideoBloc>(context)
+                          //     .add(VideoUpload(file));
+                        } else {
+                          isCameraRecording = true;
+                          recordVideo();
                         }
-                      },
-                      onTapUp: (_) async {
-                        XFile xFile = await controller.stopVideoRecording();
-                        File file = File(xFile.path);
-                        BlocProvider.of<VideoBloc>(context).add(VideoUpload(file));
                       },
                       child: SafeArea(
                         top: false,
