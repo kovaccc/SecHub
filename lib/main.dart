@@ -3,9 +3,15 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sechub/bloc/video/video_bloc.dart';
+import 'package:sechub/repositories/video_repository.dart';
+
+import 'package:sechub/di/injection.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
   runApp(const MyApp());
 }
 
@@ -29,7 +35,10 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const ScanPaintPage(),
+      home: BlocProvider(
+          create: (context) =>
+              VideoBloc(videoRepository: getIt<VideoRepository>()),
+          child: const ScanPaintPage()),
     );
   }
 }
@@ -102,6 +111,7 @@ class _ScanPaintPageState extends State<ScanPaintPage> {
                       onTapUp: (_) async {
                         XFile xFile = await controller.stopVideoRecording();
                         File file = File(xFile.path);
+                        BlocProvider.of<VideoBloc>(context).add(VideoUpload(file));
                       },
                       child: SafeArea(
                         top: false,
