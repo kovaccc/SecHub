@@ -25,7 +25,7 @@ abstract class RestClient {
     return RestClient(dio);
   }
 
-  @POST("/okpp/upload.php")
+  @POST("/upload")
   @Headers(<String, dynamic>{
     "Content-Type": "multipart/form-data",
   })
