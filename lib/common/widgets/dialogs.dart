@@ -1,5 +1,19 @@
 import 'package:flutter/material.dart';
 
+/// \brief Helper widgets and functions for building dialogs.
+/// \details
+///
+/// @author  Matej Kovacevic
+/// @version 1.0
+/// \date 26/01/2022
+/// \copyright
+///     This code and information is provided "as is" without warranty of
+///     any kind, either expressed or implied, including but not limited to
+///     the implied warranties of merchantability and/or fitness for a
+///     particular purpose.
+///
+
+/// Widget [AlertDialog] showing progress when interacting with backend.
 class LoadingDialog extends StatelessWidget {
   const LoadingDialog({Key? key}) : super(key: key);
 
@@ -21,6 +35,7 @@ class LoadingDialog extends StatelessWidget {
   }
 }
 
+/// Creates progress dialog with given [context].
 void showLoadingDialog(BuildContext context) {
   showDialog(
     barrierDismissible: false,
@@ -31,6 +46,7 @@ void showLoadingDialog(BuildContext context) {
   );
 }
 
+/// Widget [AlertDialog] showing error when occurred with given [title] and [message].
 class ErrorMessageDialog extends StatelessWidget {
   final String title;
   final String message;
@@ -60,6 +76,7 @@ class ErrorMessageDialog extends StatelessWidget {
   }
 }
 
+/// Creates error dialog with given [context] and parameters for [ErrorMessageDialog].
 void showErrorDialog(BuildContext context, String title, String message) {
   showDialog(
     barrierDismissible: false,

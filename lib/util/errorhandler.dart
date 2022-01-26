@@ -1,7 +1,21 @@
 import 'package:dio/dio.dart';
 
+/// \brief Helper classes and functions for handling errors when interacting with backend.
+/// \details
+///
+/// @author  Matej Kovacevic
+/// @version 1.0
+/// \date 26/01/2022
+/// \copyright
+///     This code and information is provided "as is" without warranty of
+///     any kind, either expressed or implied, including but not limited to
+///     the implied warranties of merchantability and/or fitness for a
+///     particular purpose.
+///
 // error handler
 class ErrorHandler {
+  /// Accepts [response] from backend and optional [customErrorResolver]
+  /// to resolve error.
   static Exception resolveNetworkError<T>(
       {required Response<T> response, ErrorResolver? customErrorResolver}) {
     final ErrorResolver errorResolver =
@@ -9,6 +23,7 @@ class ErrorHandler {
     return errorResolver.resolve(response);
   }
 
+  /// Accepts [error] and returns message.
   static String resolveExceptionMessage(Exception error) {
     if (error is BadRequestError) {
       return "Bad video request error";
@@ -20,6 +35,7 @@ class ErrorHandler {
 
 // error resolvers
 abstract class ErrorResolver {
+  /// Accepts [response] and returns error based on received http code.
   Exception resolve<T>(Response<T> response);
 }
 
