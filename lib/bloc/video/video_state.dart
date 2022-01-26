@@ -11,7 +11,7 @@ class VideoInitial extends VideoState {}
 
 class VideoLoading extends VideoState {}
 
-class VideoSent extends VideoState {}
+class VideoSuccess extends VideoState {}
 
 class VideoError extends VideoState {
   final Exception error;

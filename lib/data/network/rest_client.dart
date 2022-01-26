@@ -17,9 +17,9 @@ abstract class RestClient {
   static RestClient create() {
     final Dio dio = Dio(BaseOptions(
         baseUrl: Constants.baseUrl,
-        connectTimeout: 30000, //30s
-        receiveTimeout: 30000,
-        sendTimeout: 30000));
+        connectTimeout: 200000,
+        receiveTimeout: 200000,
+        sendTimeout: 200000));
     dio.interceptors
         .add(DioLoggingInterceptor(level: Level.body, compact: false));
     return RestClient(dio);

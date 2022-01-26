@@ -17,7 +17,7 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
     emit(VideoLoading());
     try {
       await videoRepository.sendVideo(event.videoFile);
-      emit(VideoSent());
+      emit(VideoSuccess());
     } catch (e) {
       if (e is Exception) {
         emit(VideoError(e));

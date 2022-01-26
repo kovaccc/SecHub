@@ -1,3 +1,3 @@
 class Constants {
-  static const baseUrl = "https://okp-backend.deepq.io";
+  static const baseUrl = "http://okp-backend.deepq.io/";
 }
