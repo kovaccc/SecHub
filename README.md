@@ -2,7 +2,7 @@
 SecureHub is Flutter application whose purpose is to capture the environment and save the video to the server so it can be used in case of security breach.
 
 ## About
-Flutter project that has it's own communication with backend. The API is based on the REST architecture and app is using Retrofit with POST method to send video file request to service. The request is sent as multipart data.
+Flutter project that has it's own communication with backend (https://okp-backend.deepq.io). The API is based on the REST architecture and app is using Retrofit with POST method to send video file request to service. The request is sent as multipart data.
 
 ## Features
 The flutter app lets you:
@@ -20,6 +20,7 @@ The flutter app lets you:
 ## Screenshots
 ![image](https://user-images.githubusercontent.com/75457058/160291754-387851c8-e4d3-4924-b04b-d45e246e2ee6.png)
 ![image](https://user-images.githubusercontent.com/75457058/160291760-b90aa4f0-2818-4758-a4b4-9832a50b4620.png)
+![image](https://user-images.githubusercontent.com/75457058/160292000-74d8c4a4-7017-41f7-b6d1-01db771a9668.png)
 
 ## Permissions
 SecureHub requires the following permissions in AndroidManifest.xml:
