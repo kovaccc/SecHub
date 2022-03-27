@@ -13,6 +13,8 @@ part of 'video_bloc.dart';
 ///     the implied warranties of merchantability and/or fitness for a
 ///     particular purpose.
 ///
+
+@immutable
 abstract class VideoEvent extends Equatable {
   const VideoEvent();
 }
@@ -24,5 +26,5 @@ class VideoUpload extends VideoEvent {
   const VideoUpload(this.videoFile);
 
   @override
-  List<Object> get props => [videoFile];
+  List<Object?> get props => [videoFile];
 }

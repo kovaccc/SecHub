@@ -13,11 +13,13 @@ part of 'video_bloc.dart';
 ///     the implied warranties of merchantability and/or fitness for a
 ///     particular purpose.
 ///
+
+@immutable
 abstract class VideoState extends Equatable {
   const VideoState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 /// Initial state.

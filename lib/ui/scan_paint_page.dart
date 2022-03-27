@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sechub/bloc/video/video_bloc.dart';
+import 'package:sechub/blocs/video/video_bloc.dart';
 import 'package:sechub/common/widgets/dialogs.dart';
 import 'package:sechub/util/errorhandler.dart';
 

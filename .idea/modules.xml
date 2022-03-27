@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SecHub.iml" filepath="$PROJECT_DIR$/.idea/SecHub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/sechub_android.iml" filepath="$PROJECT_DIR$/android/sechub_android.iml" />
     </modules>
   </component>
 </project>
